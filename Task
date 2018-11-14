@@ -1,0 +1,23 @@
+let fs = require("fs")
+
+
+fs.readFile("./assets/flower.txt", (err, data) => {
+    let result = data.toString()
+    let arr = result.split("\n")
+    let numOfLines = arr.length
+    let flowerStartsS = arr.filter((arr) => arr.startsWith("S"));
+    let flowerStartWithMyNameLetter = arr.filter((arr) => arr.startsWith("M"))
+    let flowerWithFiveChar = arr.filter(function (element) {
+        return element.length < 6 && element.length > 4
+    })
+    let flowerDontStartWithS = arr.filter(function (e) {
+        return this.indexOf(e) < 0
+    }, flowerStartsS)
+
+
+
+    console.log("Number of lines = ", numOfLines)
+    console.log("Flowers that start with S = ", flowerStartsS)
+    console.log("Flowers that start with My name letter = ", flowerStartWithMyNameLetter)
+    console.log("Flowers with five characters = ", flowerWithFiveChar)
+    console.log("Flowers that don't start with S = ", flowerDontStartWithS)
